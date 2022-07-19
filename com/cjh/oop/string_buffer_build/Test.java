@@ -33,6 +33,10 @@ public class Test {
         // intern 先将指向的对象存入pool中然后再返回这个对象的引用, strValue3.intern()调用的pool引用的对象与strValue4指向的是同一个引用
         System.out.println(strValue3.intern() == strValue4);
         System.out.println(strValue4.intern());
+
+        // 打印一个对象的内存地址方法
+        System.out.println(System.identityHashCode(strValue1));
+        System.out.println(System.identityHashCode(strValue2));
     }
 
 }
