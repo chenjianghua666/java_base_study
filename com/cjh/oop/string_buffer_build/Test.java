@@ -15,6 +15,15 @@ public class Test {
         stringBuilder.append("jaja");
         System.out.println(stringBuilder.toString());
 
+
+        Integer num1 = 100;
+        Integer num2 = 100;
+
+        Integer num3 = 200;
+        Integer num4 = 200;
+
+        System.out.println(num1 == num2); // true
+        System.out.println(num3 == num4); // false
     }
 
 }
