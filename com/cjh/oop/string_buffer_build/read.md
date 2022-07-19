@@ -1,7 +1,7 @@
 # String StringBuffer StringBuilder 区别
 
 1. String 是不可变的
-2. StringBuffer append 方法有使用synchronized进行加锁, 相对来说是线程安全的
+2. StringBuffer append 方法有加锁, 线程安全
 
 ```java
  @Override
@@ -18,33 +18,6 @@
         return this;
     }
 ```
-## String
-底层实现是对象char[]的一个封装,并且对应的修饰符为final,这就是为什么String对象是不可变的原因,由于String的
-不可变性,所以string是线程安全的类型
-
-```java
- private final char value[]; // 用来存储值
-```
-
-* 不可变的好处
-    * 可以缓存hash, 当做hashMap的key值进行使用
-    * String pool的需要,如果一个String对象被创建过就会从pool中获得引用
-    * 安全: 可以用做参数
-    * 线程安全
-
-### String.intern()
-代码说明
-```java
-        String strValue1 = "haha"; // 创建的对象放到string pool中
-        String strValue2 = strValue1; // 引用的是同一个地址
-        String strValue3 = new String("haha"); // 会创建一个新的对象
-        String strValue4 = strValue3.intern(); // 引用同一个地址
-        System.out.println("====>" + (strValue1 == strValue2)+ "===>"  + (strValue1 == strValue3)); // true ===> false
-        // intern 先将指向的对象存入pool中然后再返回这个对象的引用, strValue3.intern()调用的pool引用的对象与strValue4指向的是同一个引用
-        System.out.println(strValue3.intern() == strValue4); 
-        System.out.println(strValue4.intern());
-```
-
 # Integer "=="使用
 
 事例代码
@@ -59,8 +32,8 @@
         System.out.println(num3 == num4); // false
 ```
 
-之所以这样是因为再Integer类中会有一个静态缓存内部类, 该静态缓存内部类缓存了-128~127之间的数字,
-那么当在字面量赋值操作的时候,会调用valueOf方式从缓存中先进行取数,-128~127之间的值必然取到的就是
+之所以这样是因为再Integer类中会有一个静态缓存内部类, 该静态缓存内部类缓存了-128~128之间的数字,
+那么当在字面量赋值操作的时候,会调用valueOf方式从缓存中先进行取数,-128~128之间的值必然取到的就是
 同样的一个引用地址,如果大于这个区间那么会重新new一个新的对象,所以会产生上面两种不同的结果
 ```java
     private static class IntegerCache {
@@ -105,11 +78,3 @@ valueOf取值逻辑
         return new Integer(i);
     }
 ```
-> 通过字面量的方式创建的Integer对象,调用的valueOf方法从缓存池中进行取数, 但是如果通过new关键字进行
-> 创建对象的话,那么使用==去进行比较得到的将会是FALSE,因为new关键字创建的是新的对象,地址是不一样的.
-
-# 基本类型对应缓存池范围
-* boolean values true and false
-* all byte values short values between -128 and 127
-* int values between -128 and 127 
-* char in the range \u0000 to \u007F
