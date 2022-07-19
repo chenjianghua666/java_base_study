@@ -24,6 +24,15 @@ public class Test {
 
         System.out.println(num1 == num2); // true
         System.out.println(num3 == num4); // false
+
+        String strValue1 = "haha"; // 创建的对象放到string pool中
+        String strValue2 = strValue1; // 引用的是同一个地址
+        String strValue3 = new String("haha"); // 会创建一个新的对象
+        String strValue4 = strValue3.intern(); // 引用同一个地址
+        System.out.println("====>" + (strValue1 == strValue2)+ "===>"  + (strValue1 == strValue3)); // true ===> false
+        // intern 先将指向的对象存入pool中然后再返回这个对象的引用, strValue3.intern()调用的pool引用的对象与strValue4指向的是同一个引用
+        System.out.println(strValue3.intern() == strValue4);
+        System.out.println(strValue4.intern());
     }
 
 }
