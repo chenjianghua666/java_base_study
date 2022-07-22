@@ -111,3 +111,11 @@ valueOf取值逻辑
 2. short values between -128 and 127
 3. int values between -128 and 127
 4. char in the range \u0000 to \u007F
+
+## 常量池保存的位置
+jdk1.6  存放在永久代上, 方法区
+JDK1.7 去永久代, 保存在对中
+jdk1.8 取消永久代,常亮保存在本地的内存元空间,但字符床常量池,静态变量仍保存在对中
+
+## 方法参数
+值传递和地址传递,在Java中只有值传递,只是传递的时候是值的拷贝还是地址拷贝之分.
