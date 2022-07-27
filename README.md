@@ -4,5 +4,7 @@
 
 [常用的基本包装类](https://github.com/chenjianghua666/java_base_study/blob/main/com/cjh/oop/string_buffer_build/read.md)
 
-[泛型与反射](https://github.com/chenjianghua666/java_base_study/blob/main/com/cjh/generic/%E6%B3%9B%E5%9E%8B%26%E5%8F%8D%E5%B0%84.md)
+[泛型]([https://github.com/chenjianghua666/java_base_study/blob/main/com/cjh/generic/%E6%B3%9B%E5%9E%8B%26%E5%8F%8D%E5%B0%84.md](https://github.com/chenjianghua666/java_base_study/blob/main/com/cjh/generic/%E6%B3%9B%E5%9E%8B.md))
+
+[注解与反射]([https://github.com/chenjianghua666/java_base_study/blob/main/com/cjh/generic/%E6%B3%9B%E5%9E%8B%26%E5%8F%8D%E5%B0%84.md](https://github.com/chenjianghua666/java_base_study/blob/main/com/cjh/generic/%E6%B3%9B%E5%9E%8B.md))
 
