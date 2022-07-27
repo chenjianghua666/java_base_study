@@ -119,3 +119,29 @@ jdk1.8 取消永久代,常亮保存在本地的内存元空间,但字符床常�
 
 ## 方法参数
 值传递和地址传递,在Java中只有值传递,只是传递的时候是值的拷贝还是地址拷贝之分.
+
+## String 拼接字符串
+1. 使用 + 进行拼接
+2. 使用 StringBuilder append 方法
+3. 使用 String.format 进行格式化
+
+前面两种对于复杂的拼接容易出错不直观, 但是第三种的执行效率上相对来说要低
+```java
+    // 使用 加号进行拼接
+    String url = "http://baidu.api?username=" + username + "&age=" + age + "&address="+address+"&sex="+sex+"&roledId="+roleId;
+    
+    StringBuilder urlBuilder = new StringBuilder("http://baidu.api?");
+    urlBuilder.append("userName=")
+    .append(userName)
+    .append("&age=")
+    .append(age)
+    .append("&address=")
+    .append(address)
+    .append("&sex=")
+    .append(sex)
+    .append(roledId);            
+    .append("&roledId=")
+
+    String requestUrl = "http://baidu.api?userName=%s&age=%s&address=%s&sex=%s&roledId=%s";
+    String url = String.format(requestUrl,userName,age,address,sex,roledId);
+```
