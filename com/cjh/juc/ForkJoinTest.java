@@ -32,7 +32,7 @@ public class ForkJoinTest extends RecursiveTask<Integer> {
         }else {
             int middle = (start + end) / 2;
             System.out.printf("split== %d~%d, %d~%d%n", start, middle, middle, end);
-
+            
             ForkJoinTest leftTask = new ForkJoinTest(start, middle);
             ForkJoinTest rightTask = new ForkJoinTest(middle + 1, end);
             // 执行子任务
